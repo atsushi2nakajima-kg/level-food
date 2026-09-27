@@ -5,7 +5,9 @@ import Footer from "./components/Footer/footer";
 import Certificates from "./components/certificat/certificates";
 import Products from "./components/product/product";
 import CardPage from "./components/card-page/cadr-page";
+import Home from "./pages/Home"
 import { CartProvider}  from "./context/cartcontext";
+import "./App.css"
 
 function App() {
   return (
@@ -15,8 +17,9 @@ function App() {
         <Header />
 
         <Routes>
+          <Route path="/" element={<Home/>} />
           <Route path="/card-page" element={<CardPage />} />
-          <Route path="/" element={<Chekout />} />
+          <Route path="/order" element={<Chekout />} />
           <Route path="/product" element={<Products />} />
           <Route path="/certificates" element={<Certificates />} />
         </Routes>
