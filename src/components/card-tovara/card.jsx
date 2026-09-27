@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useCart } from "../../context/cartcontext";
 import "./card.css";
 
 const Card = () => {
-  const { addToCart } = useCart();
+  const { addToCart, setSelectedProduct } = useCart();
+  const navigate = useNavigate();
 
   const product = {
     id: 1,
@@ -34,14 +35,20 @@ const Card = () => {
 
           <button
             className="order"
-            onClick={() => addToCart(product)}
+            onClick={() => {
+              addToCart(product);
+              navigate("/cart");
+            }}
           >
             Заказать
           </button>
 
-          <Link to="/card" className="more">
+          <button className="more" onClick={() => {
+            setSelectedProduct(product);
+            navigate("/card-page");
+          }}>
             Подробнее
-          </Link>
+          </button>
 
         </div>
 

@@ -1,8 +1,41 @@
 import "./style.css";
 import Meet from "../../assets/image.png"
+import { useNavigate } from "react-router-dom";
+import { useCart } from "../../context/cartcontext";
 function Products() {
+  const navigate = useNavigate();
+  const { addToCart, setSelectedProduct } = useCart();
+
+  const handleProductAction = (event) => {
+    const button = event.target.closest("button");
+    if (!button) return;
+
+    const card = button.closest(".product-card");
+    const section = button.closest(".product-section");
+    if (!card || !section) return;
+
+    const title = card.querySelector("h3")?.textContent?.trim() || "Товар";
+    const description = card.querySelector("p")?.textContent?.trim() || "";
+    const price = Number((card.querySelector("strong")?.textContent || "0").replace(/[^0-9]/g, ""));
+    const product = {
+      id: `${section.id}-${title}-${price}`,
+      title,
+      description,
+      price,
+      image: card.querySelector("img")?.src || Meet,
+    };
+
+    if (button.classList.contains("more")) {
+      setSelectedProduct(product);
+      navigate("/card-page");
+      return;
+    }
+
+    addToCart(product);
+  };
+
   return (
-    <section className="products">
+    <section className="products" onClick={handleProductAction}>
 
       <div className="products-top">
         <h1>Товары</h1>

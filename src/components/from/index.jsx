@@ -1,5 +1,9 @@
 import "./style.css";
+import { useCart } from "../../context/cartcontext";
 function Chekout () {
+  const { cart } = useCart();
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
   return (
     <div className="page">
 
@@ -124,19 +128,26 @@ function Chekout () {
             <span>Подытог</span>
           </div>
 
-          <div className="product">
-            <span>Мраморная говядина</span>
-            <span>2000 ₽</span>
-          </div>
+          {cart.length === 0 ? (
+            <div className="product">
+              <span>Корзина пуста</span>
+              <span>0 ₽</span>
+            </div>
+          ) : cart.map((item) => (
+            <div className="product" key={item.id}>
+              <span>{item.title} × {item.quantity}</span>
+              <span>{item.price * item.quantity} ₽</span>
+            </div>
+          ))}
 
           <div className="total-row">
             <span>Подытог</span>
-            <strong>2000 ₽</strong>
+            <strong>{total} ₽</strong>
           </div>
 
           <div className="total-row">
             <span>Итого</span>
-            <strong>2000 ₽</strong>
+            <strong>{total} ₽</strong>
           </div>
 
         </section>

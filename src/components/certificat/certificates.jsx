@@ -5,6 +5,7 @@ import Header from "../header/header";
 import Img from "../../assets/image copy.png"
 function Certificates() {
   return (
+  
     <section className="certificates">
       <h1>Наши сертификаты</h1>
 
