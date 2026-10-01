@@ -47,7 +47,7 @@ function CartPage() {
             <strong>Итого:</strong>
             <span>{total.toLocaleString("ru-RU")} ₽</span>
           </div>
-          <Link className="cart-checkout" to="/">Оформить заказ</Link>
+                  <Link className="cart-checkout" to="/order">Оформить заказ</Link>
         </aside>
       </div>
     </main>

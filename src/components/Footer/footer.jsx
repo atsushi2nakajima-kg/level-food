@@ -1,15 +1,16 @@
 import React from 'react';
 import './style.css'
 import Logo from "../../assets/logo.svg"
+import { Link } from "react-router-dom";
 const Footer = () => {
     return (
         <div>
              <footer className="footer">
 
         <div className="footer-links">
-          <a href="#">О компании</a>
-          <a href="#">Товары</a>
-          <a href="#">Сертификаты</a>
+          <Link to="/company">О компании</Link>
+          <Link to="/product">Товары</Link>
+          <Link to="/certificates">Сертификаты</Link>
         </div>
 
         <div className="footer-logo">

@@ -25,7 +25,7 @@ const Header = () => {
                         🛍
                         {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
                     </Link>
-                    <Link to="/" className="header-order">Сделать заказ</Link>
+                    <Link to="/order" className="header-order">Сделать заказ</Link>
                 </div>
             </header>
         </div>
